@@ -1,0 +1,9 @@
+.localizacao-atendidas__titulo {
+    background-color: var(--branco);
+    color: var(--laranja);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    padding: 1em;
+}
