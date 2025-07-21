@@ -137,8 +137,8 @@
     }
 
     .opcoes {
-        margin-right: auto; /* Empurra os links para perto do logo */
-        margin-left: 5em;
+
+        display: flex;
     }
     
     .container__imagem {
