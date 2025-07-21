@@ -219,8 +219,8 @@
             const email = document.getElementById('contato-email').value;
             const message = document.getElementById('contato-mensagem').value;
 
-            // URL da sua API. Em produção, mude para a URL do seu servidor real.
-            const apiEndpoint = 'http://localhost:3001/send-email';
+            // Este caminho vai funcionar diretamente no netlify, onde o backend está configurado
+            const apiEndpoint = '/api/send-email';
 
             // Feedback visual para o usuário
             botao.disabled = true;

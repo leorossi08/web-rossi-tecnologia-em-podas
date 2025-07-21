@@ -1,0 +1,13 @@
+# netlify.toml
+
+[build]
+  # Diretório onde estão os arquivos do seu site (HTML, CSS, etc.)
+  publish = "frontend/"
+  # Diretório onde o Netlify encontrará suas funções serverless
+  functions = "backend-email/"
+
+# Redirecionamento para tornar a URL da API mais amigável
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
