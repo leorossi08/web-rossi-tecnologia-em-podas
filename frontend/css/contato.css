@@ -35,6 +35,39 @@
     padding: 0 2em;
 }
 
+.contato__formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contato__mensagem {
+    padding: 1em;
+    border: 1px solid var(--azul);
+    border-radius: 10px;
+    width: 90%;
+    color: var(--azul);
+    font-family: var(--fonte-principal);
+    margin: 1em 0;
+}
+
+.contato__botao {
+    background-color: var(--laranja);
+    color: var(--branco);
+    padding: 1em 1.5em;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contato__botao:hover {
+    background-color: #c88500;
+}
+
+
 @media screen and (min-width:1024px) {
     .contato {
         display: flex;
@@ -49,11 +82,19 @@
 
     .contato__descricao {
         margin-right: 1em;
-        width: 30;
+        width: 30%;
     }
 
     .contato__email {
+        width: 100%;
+    }
+
+    .contato__formulario {
         width: 30%;
+    }
+
+    .contato__mensagem {
+        width: 100%;
     }
 }
 

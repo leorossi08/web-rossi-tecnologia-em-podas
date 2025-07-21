@@ -157,11 +157,14 @@
             <h2 class="contato__titulo">Solicite um Orçamento</h2>
             <p class="contato__texto">Não tem hora melhor para cuidar da sua plantação do que agora.</p>
         </div>
-        <input type="email" placeholder="Seu email..." class="contato__email">
+        <form class="contato__formulario" id="contato-formulario">
+            <input type="email" placeholder="Seu email..." class="contato__email" id="contato-email" required>
+            <textarea class="contato__mensagem" id="contato-mensagem" rows="4" placeholder="Como podemos te ajudar?" required></textarea>
+            <button type="submit" class="contato__botao">Enviar</button>
+        </form>
     </section>
 
     <hr />
-
     <footer class="rodape">
         <div class="rodape__container">
             <h2 class="rodape__titulo">Rossi Tecnologia em Podas</h2>
@@ -176,9 +179,7 @@
                 </a>
             </div>
             <div class="rodape__localizacao">
-                <svg class="rodape__icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                </svg>
+                <img src="img/local.svg" alt="Ícone de Localização" class="rodape__icone">
                 <p class="rodape__texto">Vista Alegre do Alto - SP</p>
             </div>
         </div>
@@ -210,6 +211,54 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+        });
+
+        document.getElementById('contato-formulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const email = document.getElementById('contato-email').value;
+            const mensagem = document.getElementById('contato-mensagem').value;
+
+            // IMPORTANTE: Substitua 'URL_DA_SUA_API_DE_EMAIL' pela URL real do seu serviço de backend que envia o email.
+            const apiEndpoint = 'URL_DA_SUA_API_DE_EMAIL';
+
+            console.log('Enviando para:', apiEndpoint);
+            console.log('Dados:', { email, mensagem });
+
+            // Simulação de envio de email para demonstração
+            // Remova esta parte e descomente o código fetch abaixo quando tiver uma API real.
+            alert('Simulação: Email enviado com sucesso! Verifique o console para ver os dados.');
+            document.getElementById('contato-formulario').reset();
+
+
+            /*
+            // Descomente este código quando tiver sua API pronta
+            fetch(apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    message: mensagem
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('A resposta da rede não foi ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Sucesso:', data);
+                alert('Email enviado com sucesso!');
+                document.getElementById('contato-formulario').reset();
+            })
+            .catch((error) => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.');
+            });
+            */
         });
     </script>
 </body>
