@@ -45,7 +45,7 @@ exports.handler = async function(event, context) {
       replyTo: email,
       subject: `Nova mensagem de contato de ${name}`,
       html: `
-        <h2>Nova Mensagem do Formulário de Contato</h2>
+        <h2>Nova Mensagem do Formulário de Contato de Rossi Tecnologia em Podas</h2>
         <p><strong>Nome:</strong> ${name}</p>
         <p><strong>Email do Remetente:</strong> ${email}</p>
         <p><strong>Mensagem:</strong></p>
