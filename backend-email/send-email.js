@@ -1,72 +1,72 @@
-// backend-email/send-email.js (VERSÃO DE DEPURAÇÃO)
+// backend-email/send-email.js (VERSÃO NATIVA DO NETLIFY - RECOMENDADA)
 
-const express = require('express');
 const nodemailer = require('nodemailer');
-const cors = require('cors');
-const serverless = require('serverless-http');
-require('dotenv').config();
 
-// --- LOG DE DEPURAÇÃO 1: Verificando as variáveis de ambiente ---
-console.log('--- INICIANDO FUNÇÃO ---');
-console.log('SENDGRID_API_KEY existe?', !!process.env.SENDGRID_API_KEY);
-console.log('FROM_EMAIL:', process.env.FROM_EMAIL);
-console.log('TO_EMAIL:', process.env.TO_EMAIL);
-console.log('-------------------------');
-
-const app = express();
-const router = express.Router();
-
-app.use(cors());
-app.use(express.json());
-
-// --- Configuração do Nodemailer com SendGrid ---
-const transporter = nodemailer.createTransport({
-  host: 'smtp.sendgrid.net',
-  port: 587,
-  auth: {
-    user: 'apikey',
-    pass: process.env.SENDGRID_API_KEY
+// A função handler é o ponto de entrada para o Netlify
+exports.handler = async function(event, context) {
+  // O event.httpMethod verifica se a requisição é um POST
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: 'Method Not Allowed',
+    };
   }
-});
 
-// --- Rota de envio ---
-router.post('/', (req, res) => {
-  // --- LOG DE DEPURAÇÃO 2: Verificando a rota ---
-  console.log('Rota POST / foi chamada.');
-  console.log('Dados recebidos do formulário:', req.body);
+  try {
+    // Os dados do formulário vêm no corpo do evento, como uma string JSON
+    const { name, email, message } = JSON.parse(event.body);
 
-  const { name, email, message } = req.body;
+    console.log('Dados recebidos:', { name, email, message });
 
-  const mailOptions = {
-    from: process.env.FROM_EMAIL,
-    to: process.env.TO_EMAIL,
-    replyTo: email,
-    subject: `Nova mensagem de contato de ${name}`,
-    html: `
-      <h2>Nova Mensagem do Formulário de Contato</h2>
-      <p><strong>Nome:</strong> ${name}</p>
-      <p><strong>Email do Remetente:</strong> ${email}</p>
-      <p><strong>Mensagem:</strong></p>
-      <p>${message}</p>
-    `,
-  };
-
-  // --- LOG DE DEPURAÇÃO 3: Antes de enviar ---
-  console.log('Opções do e-mail montadas. Tentando enviar...');
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      // --- LOG DE DEPURAÇÃO 4: Erro no envio ---
-      console.error('ERRO DETALHADO AO ENVIAR:', error);
-      return res.status(500).json({ error: 'Erro ao enviar o e-mail.' });
+    // Pega as variáveis de ambiente (já estão disponíveis no contexto da função)
+    const fromEmail = process.env.FROM_EMAIL;
+    const toEmail = process.env.TO_EMAIL;
+    const sendgridApiKey = process.env.SENDGRID_API_KEY;
+    
+    // Validação para garantir que as variáveis foram carregadas
+    if (!fromEmail || !toEmail || !sendgridApiKey) {
+        throw new Error("Variáveis de ambiente de e-mail não configuradas.");
     }
 
-    // --- LOG DE DEPURAÇÃO 5: Sucesso no envio ---
-    console.log('SUCESSO! Resposta do SendGrid:', info.response);
-    res.status(200).json({ success: 'E-mail enviado com sucesso!' });
-  });
-});
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.sendgrid.net',
+      port: 587,
+      auth: {
+        user: 'apikey',
+        pass: sendgridApiKey,
+      },
+    });
 
-app.use('/.netlify/functions/send-email', router);
+    console.log('Tentando enviar o e-mail...');
 
-module.exports.handler = serverless(app);
+    await transporter.sendMail({
+      from: fromEmail,
+      to: toEmail,
+      replyTo: email,
+      subject: `Nova mensagem de contato de ${name}`,
+      html: `
+        <h2>Nova Mensagem do Formulário de Contato</h2>
+        <p><strong>Nome:</strong> ${name}</p>
+        <p><strong>Email do Remetente:</strong> ${email}</p>
+        <p><strong>Mensagem:</strong></p>
+        <p>${message}</p>
+      `,
+    });
+
+    console.log('E-mail enviado com sucesso!');
+
+    // Retorna uma resposta de sucesso para o frontend
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'E-mail enviado com sucesso!' }),
+    };
+
+  } catch (error) {
+    console.error('ERRO DETALHADO:', error);
+    // Retorna uma resposta de erro para o frontend
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Erro ao enviar o e-mail.' }),
+    };
+  }
+};
