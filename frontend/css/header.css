@@ -25,6 +25,7 @@
     padding: 1em;
     width: 5em;
     height: 5em;
+    
 }
 
 .lista-menu {
@@ -90,6 +91,7 @@
     .container__imagem {
         width: 150px;
         height: 150px;
+   
     }   
     .container__titulo {
         font-weight: 400;
@@ -98,6 +100,7 @@
 
     .container__titulo--negrito {
         font-weight: 700;
+        padding: 0.25em;
     }
 
     /* Esconde o menu hambúrguer no desktop */

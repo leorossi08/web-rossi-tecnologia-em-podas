@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rossi Podas</title>
+
+    <link rel="icon" type="image/png" href="img/trator_rossi.png">
+
     <link rel="stylesheet" href="reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,7 +99,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <video controls>
-                            <source src="video/poda.mp4" type="video/mp4">
+                            <source src="video/poda1.mp4" type="video/mp4">
                             Seu navegador não suporta o elemento de vídeo.
                         </video>
                     </div>
@@ -158,10 +161,11 @@
             <p class="contato__texto">Não tem hora melhor para cuidar da sua plantação do que agora.</p>
         </div>
         <form class="contato__formulario" id="contato-formulario">
-            <input type="email" placeholder="Seu email..." class="contato__email" id="contato-email" required>
+            <input type="text" placeholder="Seu nome completo..." class="contato__email" id="contato-nome" required>
+            <input type="email" placeholder="Seu melhor email..." class="contato__email" id="contato-email" required>
             <textarea class="contato__mensagem" id="contato-mensagem" rows="4" placeholder="Como podemos te ajudar?" required></textarea>
-            <button type="submit" class="contato__botao">Enviar</button>
-        </form>
+            <button type="submit" class="contato__botao" id="botao-enviar">Enviar</button>
+            <p id="status-envio" class="contato__status"></p> </form>
     </section>
 
     <hr />
@@ -187,78 +191,73 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
+        // --- Configuração dos Carrosséis (Swiper) ---
         const swiperMaquinas = new Swiper('.swiper-maquinas', {
             spaceBetween: 10,
             slidesPerView: 3,
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+            pagination: { el: '.swiper-pagination', type: 'bullets' },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         });
 
         const swiperMidia = new Swiper('.swiper-midia', {
             spaceBetween: 10,
             slidesPerView: 1,
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+            pagination: { el: '.swiper-pagination', type: 'bullets' },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         });
 
-        document.getElementById('contato-formulario').addEventListener('submit', function(event) {
+        // --- Lógica do Formulário de Contato (ATUALIZADO) ---
+        document.getElementById('contato-formulario').addEventListener('submit', function (event) {
             event.preventDefault(); // Impede o envio padrão do formulário
 
+            const botao = document.getElementById('botao-enviar');
+            const statusMsg = document.getElementById('status-envio');
+
+            // Pega os valores dos campos do formulário
+            const name = document.getElementById('contato-nome').value;
             const email = document.getElementById('contato-email').value;
-            const mensagem = document.getElementById('contato-mensagem').value;
+            const message = document.getElementById('contato-mensagem').value;
 
-            // IMPORTANTE: Substitua 'URL_DA_SUA_API_DE_EMAIL' pela URL real do seu serviço de backend que envia o email.
-            const apiEndpoint = 'URL_DA_SUA_API_DE_EMAIL';
+            // URL da sua API. Em produção, mude para a URL do seu servidor real.
+            const apiEndpoint = 'http://localhost:3001/send-email';
 
-            console.log('Enviando para:', apiEndpoint);
-            console.log('Dados:', { email, mensagem });
+            // Feedback visual para o usuário
+            botao.disabled = true;
+            botao.innerText = 'Enviando...';
+            statusMsg.innerText = '';
+            statusMsg.style.color = 'inherit';
 
-            // Simulação de envio de email para demonstração
-            // Remova esta parte e descomente o código fetch abaixo quando tiver uma API real.
-            alert('Simulação: Email enviado com sucesso! Verifique o console para ver os dados.');
-            document.getElementById('contato-formulario').reset();
-
-
-            /*
-            // Descomente este código quando tiver sua API pronta
+            // Envia os dados para a API
             fetch(apiEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    email: email,
-                    message: mensagem
-                })
+                body: JSON.stringify({ name, email, message }) // Envia nome, email e mensagem
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('A resposta da rede não foi ok');
+                    // Se a resposta do servidor não for OK, lança um erro
+                    throw new Error('Falha no envio. Tente novamente.');
                 }
-                return response.json();
+                return response.text(); // Usa .text() se o servidor envia uma string simples
             })
             .then(data => {
                 console.log('Sucesso:', data);
-                alert('Email enviado com sucesso!');
-                document.getElementById('contato-formulario').reset();
+                statusMsg.innerText = 'Mensagem enviada com sucesso!';
+                statusMsg.style.color = 'green';
+                document.getElementById('contato-formulario').reset(); // Limpa o formulário
             })
             .catch((error) => {
                 console.error('Erro:', error);
-                alert('Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.');
+                statusMsg.innerText = 'Ocorreu um erro. Por favor, tente novamente mais tarde.';
+                statusMsg.style.color = 'red';
+            })
+            .finally(() => {
+                // Reabilita o botão após o término da requisição
+                botao.disabled = false;
+                botao.innerText = 'Enviar';
             });
-            */
         });
     </script>
 </body>
