@@ -1,8 +1,12 @@
 # netlify.toml
 
 [build]
+  # COMANDO ADICIONADO: Força a instalação das dependências do package.json da raiz
+  command = "npm install"
+
   # Diretório onde estão os arquivos do seu site (HTML, CSS, etc.)
   publish = "frontend/"
+  
   # Diretório onde o Netlify encontrará suas funções serverless
   functions = "backend-email/"
 
