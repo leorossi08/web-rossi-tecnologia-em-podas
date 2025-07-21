@@ -53,6 +53,11 @@
     padding: 1em;
 }
 
+.botao__icone__whatsapp {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.2em;
+}
 .descricao__titulo {
     color: var(--laranja);
     font-weight: 700;
@@ -92,9 +97,21 @@
     height: 28px;
 }
 
+.botoes__ancora__whatsapp {
+    display: flex;
+    align-items: center;
+    background-color: var(--laranja);
+    padding: 0.5em 1em;
+    color: var(--branco);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
 .botoes__ancora {
     background-color: var(--laranja);
-    padding: 1em 1.5em;
+    padding: 1em 1em;
     color: var(--branco);
     font-weight: 700;
     text-decoration: none;
