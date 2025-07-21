@@ -50,12 +50,21 @@
 
 .rodape__texto {
     color: var(--cinza-claro);
+}
+
+.rodape__localizacao {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza no mobile */
     margin-bottom: 2em;
 }
 
-.rodape__creditos {
-    font-size: 12px;
-    color: var(--cinza);
+.rodape__localizacao .rodape__icone {
+    fill: var(--branco); /* Define a cor do ícone de localização */
+}
+
+.rodape__localizacao .rodape__texto {
+    margin-bottom: 0; /* Remove a margem para evitar espaçamento duplo */
 }
 
 
@@ -74,6 +83,10 @@
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
+    }
+    
+    .rodape__localizacao {
+        justify-content: flex-start; /* Alinha à esquerda no desktop */
     }
 
     .rodape__titulo {
