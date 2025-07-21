@@ -12,8 +12,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     position: relative;
+    padding: 0 1em; /* Adicionado padding para alinhar melhor */
 }
 
 .container {
@@ -27,14 +27,14 @@
     height: 5em;
 }
 
-
 .lista-menu {
     display: none;
     position: absolute;
     top: 100%;
     width: 60vw;
+    background-color: var(--branco);
+    z-index: 10; /* Garante que o menu fique por cima */
 }
-
 
 .container__botao:checked~.lista-menu {
     display: block;
@@ -57,6 +57,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 .container__titulo {
@@ -68,11 +69,7 @@
 }
 
 .opcoes {
-    display: none;
-}
-
-.container__texto {
-    display: none;
+    display: none; /* Esconde as opções no mobile */
 }
 
 .container__botao:checked ~ .container__rotulo > .cabecalho__menu-hamburguer {
@@ -83,6 +80,7 @@
     background: var(--azul-degrade);
 }
 
+/* Estilos para Tablet e Desktop */
 @media screen and (min-width: 1024px) {
     .container__titulo, .container__titulo--negrito {
         font-family: var(--fonte-secundaria);
@@ -101,60 +99,43 @@
     .container__titulo--negrito {
         font-weight: 700;
     }
+
+    /* Esconde o menu hambúrguer no desktop */
+    .cabecalho__menu-hamburguer,
+    .container__botao,
+    .container__rotulo {
+        display: none;
+    }
+
+    /* Mostra as opções no desktop */
     .opcoes {
         display: flex;
     }
     
     .opcoes__item {
-        padding: 0 1em;
+        margin: 0 3em;
         text-transform: uppercase;
     }
     
-
-    .container__imagem-transparente {
-        display: none;
-    }
-
-
-    .opcoes__botao:checked ~ .lista-menu {
-        display: block;
-        width: auto;
-    }
-
-    .opcoes__botao {
-        display: none;
-    }
-
-    .opcoes__botao:checked ~ .opcoes__rotulo > .opcoes__item {
-        background: var(--azul-degrade);
-        color: var(--branco);
-    }
-
-    .opcoes__item {
-        padding: 2em 1em;
-    }
-
-    .lista-menu__item:hover {
-        background: var(--azul-degrade);
-    }
-
-    .lista-menu__item:hover > .lista-menu__link {
-        -webkit-text-fill-color: var(--branco);
+    .opcoes__link {
         text-decoration: none;
+        color: var(--preto);
+        font-family: var(--fonte-principal);
+    }
+    
+    .opcoes__link:hover {
+        color: var(--laranja);
     }
 }
 
 @media screen and (min-width: 1728px) {
-    .container__texto {
-        display: block;
-    }
-
     .cabecalho {
-        padding: 0 2em;
+        padding: 0 5em; /* Aumenta o espaçamento lateral */
     }
 
     .opcoes {
-        margin-right: auto;
+        margin-right: auto; /* Empurra os links para perto do logo */
+        margin-left: 5em;
     }
     
     .container__imagem {

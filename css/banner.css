@@ -2,27 +2,51 @@
     background: var(--azul-degrade);
     color: var(--branco);
     text-align: center;
-    padding: 2.5em 2em;
+    padding: 3em 2em; /* Aumenta o espaçamento interno */
 }
 
 .banner__titulo {
-    font-size: 18px;
+    font-size: 22px; /* Título maior */
     font-weight: 700;
 }
 
 .banner__texto {
     font-weight: 500;
-    margin: 1em 0;
+    margin: 1.5em 0 2em 0; /* Aumenta as margens */
+}
+
+.banner__botao-cta {
+    background-color: var(--laranja); /* Cor de destaque */
+    color: var(--branco);
+    border: 2px solid var(--laranja);
+    border-radius: 24px;
+    padding: 1em 2em;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.banner__botao-cta:hover {
+    background-color: #c88500; /* Um tom de laranja mais escuro no hover */
+    border-color: #c88500;
+    transform: scale(1.05); /* Efeito de crescimento sutil */
 }
 
 
-
-
-
-
-@media screen and (min-width:1728px) {
+@media screen and (min-width: 1024px) {
+    .banner__titulo {
+        font-size: 36px;
+    }
 
     .banner {
-        padding: 6em 0;
+        padding: 5em 0;
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .banner {
+        padding: 7em 0;
     }
 }

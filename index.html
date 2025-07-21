@@ -25,119 +25,133 @@
             <ul class="lista-menu">
                 <li class="lista-menu__titulo">Categorias</li>
                 <li class="lista-menu__item">
-                    <a href="#" class="lista-menu__link">Nossas Máquinas</a>
+                    <a href="#maquinas" class="lista-menu__link">Nossas Máquinas</a>
                 </li>
                 <li class="lista-menu__item">
-                    <a href="#" class="lista-menu__link">Serviços</a>
+                    <a href="#servicos" class="lista-menu__link">Serviços</a>
                 </li>
                 <li class="lista-menu__item">
-                    <a href="#" class="lista-menu__link">Contato</a>
+                    <a href="#contato" class="lista-menu__link">Contato</a>
                 </li>
-    
             </ul>
-            <img src="img/logo_poda.jpg" alt="Logo Rossi Podas" class="container__imagem">
+            <a href="#"><img src="img/logo_poda.jpg" alt="Logo Rossi Podas" class="container__imagem"></a>
             <h1 class="container__titulo"><b class="container__titulo--negrito">Rossi</b>Tecnologia em Podas</h1>
         </div>
 
         <ul class="opcoes">
-            <input type="checkbox" id="opcoes-menu" class="opcoes__botao">
-            <label for="opcoes-menu" class="opcoes__rotulo">
-                <li class="opcoes__item">Categorias</li>
-            </label>
-
-            <ul class="lista-menu">
-                <li class="lista-menu__item">
-                    <a href="#" class="lista-menu__link">Serviços</a>
-                </li>
-                <li class="lista-menu__item">
-                    <a href="#" class="lista-menu__link">Contato</a>
-                </li>
-            </ul>
+            <li class="opcoes__item"><a href="#servicos" class="opcoes__link">Serviços</a></li>
+            <li class="opcoes__item"><a href="#contato" class="opcoes__link">Contato</a></li>
         </ul>
     </header>
-    <section class="banner">
-        <h2 class="banner__titulo">Alavanca sua produção com os nossos serviços de podas</h2>
-        <p class="banner__texto">Nossos profissionais são especialista e contam com a mais recente tecnologia de ponta em podas</p>
 
+    <section class="banner">
+        <h2 class="banner__titulo">Alavanque sua produção com nossos serviços de poda</h2>
+        <p class="banner__texto">Nossos profissionais são especialistas e contam com a mais recente tecnologia de ponta.</p>
+        <a href="#contato" class="banner__botao-cta">Solicite um Orçamento Agora</a>
     </section>
-    <section class="carrosel">
+
+    <section class="carrosel" id="maquinas">
         <h2 class="carrosel__titulo">Nossas Máquinas</h2>
-        <!-- Slider main container -->
         <div class="carrosel__container">
-            <div class="swiper">
-                <!-- Additional required wrapper -->
-                <!-- If we need pagina tion -->
+            <div class="swiper swiper-maquinas">
                 <div class="swiper-pagination"></div>
                 <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide"><img src="img/maquina1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="img/maquina2.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="img/maquina3.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="img/carro_e_maquina.jpg" alt=""></div>
-                    
+                    <div class="swiper-slide"><img src="img/maquina1.jpg" alt="Máquina de poda 1"></div>
+                    <div class="swiper-slide"><img src="img/maquina2.jpg" alt="Máquina de poda 2"></div>
+                    <div class="swiper-slide"><img src="img/maquina3.jpg" alt="Máquina de poda 3"></div>
+                    <div class="swiper-slide"><img src="img/carro_e_maquina.jpg" alt="Carro e máquina de poda"></div>
                 </div>
-                <!-- If we need navigation buttons -->
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-            
-            </div>
         </div>
-
     </section>
+
     <section class="localizacao-atendidas">
         <h2 class="localizacao-atendidas__titulo">Localização</h2>
-
         <div class="card">
-            <!-- 1° Linha -->
             <div class="card__descricao">
-                <!-- 1° Coluna -->
                 <div class="descricao">
                     <h3 class="descricao__titulo">Vista Alegre do Alto - SP</h3>
                     <h2 class="descricao__titulo-card">Mas viajamos por todo estado de São Paulo e muito mais:</h2>
-                    <p class="descricao__texto">Estivemos presentes já em Minas Gerais, Mato Grosso do Sul, Paraná...Faça um orçamento que lhe passamos a disponibilidade.</p>
+                    <p class="descricao__texto">Estivemos presentes já em Minas Gerais, Mato Grosso do Sul, Paraná...Faça um orçamento que lhe passamos a disponibilidade. Nossa equipe está sempre pronta para atender você, onde quer que esteja. Com ajuda de pranchas e caminhões, nossas máquina percorrem o Brasil.</p>
                 </div>
-                <!-- 2° Coluna -->
                 <img src="img/caminhao_levando_trator.png" class="descricao__imagem" alt="Viajamos por todo Brasil">
             </div>
             <div class="card__botoes">
-                    <!-- 1° Coluna -->
-                    <ul class="botoes">
-                        <li class="botoes__item"><img src="img/brazil.png" alt="Viajamos o Brasil"></li>
-                        <li class="botoes__item"><img src="img/tractor.png" alt=""></li>
-                    </ul>
-                    <!-- 2° Coluna -->
-                    <a href="#" class="botoes__ancora">Saiba mais</a>
-                </div>
+                <ul class="botoes">
+                    <li class="botoes__item"><img src="img/brazil.png" alt="Viajamos o Brasil"></li>
+                    <li class="botoes__item"><img src="img/tractor.png" alt="Trator"></li>
+                </ul>
+            </div>
         </div>
     </section>
-    <section class="topicos">
+
+    <section class="poda-em-acao">
+        <h2 class="poda-em-acao__titulo">Poda em Ação</h2>
+        <div class="carrosel__container">
+            <div class="swiper swiper-midia">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <video controls>
+                            <source src="video/poda.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                    <div class="swiper-slide">
+                        <video controls>
+                            <source src="video/poda2.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                    <div class="swiper-slide">
+                        <video controls>
+                            <source src="video/poda3.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                    <div class="swiper-slide"><img src="img/poda.jpg" alt="Imagem da poda em ação"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="agrishow">
+        <h2 class="agrishow__titulo">Rossi Tecnologia no Agrishow 2024</h2>
+        <div class="card">
+            <div class="card__descricao">
+                <div class="descricao">
+                    <h3 class="descricao__titulo">Estivemos na Agrishow 2024!</h3>
+                    <h2 class="descricao__titulo-card">Levando nossa tecnologia em podas para a maior feira de tecnologia agrícola do Brasil.</h2>
+                    <p class="descricao__texto">Foi um prazer ter uma de nossas novas máquinas presente no Agrishow 2024, antes mesmo de entrar para a roça. Nossa equipe sempre está presente nesse evento, conhecendo as novidades do setor e realizando parcerias e contratos que nos conectam com o que há de mais moderno em tecnologia agrícola. Mas, nossa felicidade é ainda maior quando podemos levar nossas máquinas para o campo, onde elas realmente fazem a diferença na produtividade e qualidade das plantações.</p>
+                </div>
+                <img src="img/poda.jpg" class="descricao__imagem" alt="Agrishow 2024">
+            </div>
+            <div class="card__botoes">
+                <ul class="botoes">
+                    <li class="botoes__item"><img src="img/tractor.png" alt="Tecnologia no Agro"></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="topicos" id="servicos">
         <h2 class="topicos__titulo">Serviços</h2>
         <ul class="topicos__lista">
-            <li class="topicos__item">
-                <a href="#" class="topicos__link">Laranja</a>
-            </li>
-            <li class="topicos__item">
-                <a href="#" class="topicos__link">Manga</a>
-            </li>
-            <li class="topicos__item">
-                <a href="#" class="topicos__link">Abacate</a>
-            </li>
-            <li class="topicos__item">
-                <a href="#" class="topicos__link">Limão</a>
-            </li>
-            <li class="topicos__item">
-                <a href="#" class="topicos__link">Cerca Viva</a>
-            </li>
-            <li class="topicos__item">
-                <a href="#" class="topicos__link">Frutas em Geral</a>
-            </li>
-            <li class="topicos__item">
-                <a href="#" class="topicos__link">Cítricos em Geral</a>
-            </li>
+            <li class="topicos__item"><a href="#" class="topicos__link">Laranja</a></li>
+            <li class="topicos__item"><a href="#" class="topicos__link">Manga</a></li>
+            <li class="topicos__item"><a href="#" class="topicos__link">Abacate</a></li>
+            <li class="topicos__item"><a href="#" class="topicos__link">Limão</a></li>
+            <li class="topicos__item"><a href="#" class="topicos__link">Cerca Viva</a></li>
+            <li class="topicos__item"><a href="#" class="topicos__link">Frutas em Geral</a></li>
+            <li class="topicos__item"><a href="#" class="topicos__link">Cítricos em Geral</a></li>
         </ul>
     </section>
-    <section class="contato">
+
+    <section class="contato" id="contato">
         <div class="contato__descricao">
             <h2 class="contato__titulo">Solicite um Orçamento</h2>
             <p class="contato__texto">Não tem hora melhor para cuidar da sua plantação do que agora.</p>
@@ -149,21 +163,47 @@
 
     <footer class="rodape">
         <div class="rodape__container">
-            <div class="rodape__descricao">
-                <h2 class="rodape__titulo">Rossi Tecnologia em Podas</h2>
-                <p class="rodape__texto">Vista Alegre do Alto - SP</p>
-                <p class="rodape__texto">Telefone: (16) 99769-7884</p>
-                <p class="rodape__texto">Email: pedroluizrossi@gmail.com
+            <h2 class="rodape__titulo">Rossi Tecnologia em Podas</h2>
+            <div class="rodape__contato">
+                <a href="https://wa.me/5516997697884" target="_blank" class="rodape__link">
+                    <img src="img/whatsapp.svg" alt="Ícone do WhatsApp" class="rodape__icone__whatsapp">
+                    (16) 99769-7884
+                </a>
+                <a href="mailto:pedroluizrossi@gmail.com" class="rodape__link">
+                    <img src="img/email.svg" alt="Ícone de Email" class="rodape__icone">
+                    pedroluizrossi@gmail.com
+                </a>
+            </div>
+            <p class="rodape__texto">Vista Alegre do Alto - SP</p>
+            <p class="rodape__creditos">Desenvolvido por [Seu Nome ou Empresa]</p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('.swiper', {
+        const swiperMaquinas = new Swiper('.swiper-maquinas', {
             spaceBetween: 10,
             slidesPerView: 3,
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        const swiperMidia = new Swiper('.swiper-midia', {
+            spaceBetween: 10,
+            slidesPerView: 1,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
         });
     </script>

@@ -10,6 +10,13 @@
 
 .swiper-slide img {
     width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o slide sem distorcer */
+}
+
+/* Define uma altura para os slides do carrossel de máquinas */
+.swiper-maquinas .swiper-slide {
+    height: 250px; 
 }
 
 .swiper-button-prev,
@@ -25,6 +32,7 @@
 .card__descricao {
     display: flex;
     justify-content: space-between;
+    align-items: center; 
     margin-bottom: 0.5em;
 }
 
@@ -60,18 +68,18 @@
 .descricao__texto {
     font-size: 14px;
     margin: 0.5em 0.2em;
-    justify-self: set;
 }
 
 .descricao__imagem {
-    width: 8em;
+    width: 10em; 
     height: auto;
     border-radius: 10px;
+    margin-left: 1em; 
 }
 
 .card__botoes {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -90,14 +98,6 @@
     height: 28px;
 }
 
-.botoes__ancora {
-    background-color: var(--laranja);
-    padding: 1em 1.5em;
-    color: var(--branco);
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 5px;
-}
 @media screen and (min-width:1024px) {
     .carrosel__titulo {
         font-size: 26px;
@@ -108,7 +108,12 @@
     }
 
     .swiper {
-        width: 60%;
+        width: 80%; /* Aumenta a largura do carrossel */
+    }
+
+    /* Aumenta a altura dos slides de máquinas em telas maiores */
+    .swiper-maquinas .swiper-slide {
+        height: 350px;
     }
 
     .swiper-button-prev,
@@ -118,7 +123,7 @@
     }
 
     .card {
-        width: 40%;
+        width: 50%; /* Ajusta a largura do card para o novo layout */
         margin: 2em auto;
     }
 }
@@ -126,16 +131,16 @@
 @media screen and (min-width: 1728px) {
     .carrosel__container {
         display: flex;
-        margin: 0 20vw 2em 20vw;
+        margin: 0 10vw 2em 10vw; /* Ajusta as margens */
         align-items: center;
-    }
-
-    .swiper-pagination {
-        margin: 1em 0;
     }
     
     .swiper {
-        width: 50%;
+        width: 90%; /* Deixa o carrossel bem largo em telas grandes */
+    }
+    
+    .swiper-maquinas .swiper-slide {
+        height: 450px; /* Deixa os slides ainda mais altos */
     }
 
     .descricao__titulo {
@@ -146,12 +151,12 @@
         font-size: 16px;
     }
 
-
-
     .card {
         width: 60%;
-        margin-left: 3em;
+        margin: 2em auto; 
     }
 
-
+    .descricao__imagem {
+        width: 12em; 
+    }
 }

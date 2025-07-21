@@ -24,6 +24,7 @@
 .topicos__link {
     color: var(--branco);
     padding: 1em;
+    border-radius: 1em;
     background-color: var(--laranja);
     text-decoration: none;
     font-size: 14px;
